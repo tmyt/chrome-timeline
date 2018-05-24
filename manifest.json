@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome Timeline",
+  "version": "1.1",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["timeline.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "identity",
+    "storage",
+    "https://graph.microsoft.com/v1.0/me/activities/*",
+    "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+  ],
+  "options_page": "options/index.html"
+}
