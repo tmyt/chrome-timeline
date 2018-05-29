@@ -19,5 +19,7 @@
     "https://graph.microsoft.com/v1.0/me/activities/*",
     "https://login.microsoftonline.com/common/oauth2/v2.0/token"
   ],
-  "options_page": "options/index.html"
+  "options_ui": {
+    "page": "options/index.html"
+  }
 }
