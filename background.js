@@ -1,5 +1,5 @@
 const AuthorizeUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
-    , RedirectUrl = `https://${chrome.runtime.id}.chromiumapp.org/callback`
+    , RedirectUrl = chrome.identity.getRedirectURL()
     , ClientId = '02a9023b-5630-4e88-83cc-bcd7629c6cf6'
     , ClientSecret = 'csbRA707*wkxpTXNAQ55:?$'
     , Scope = 'UserActivity.ReadWrite.CreatedByApp offline_access';
