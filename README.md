@@ -1,4 +1,4 @@
 # Chrome Timeline
 
-Enlabel Windows Timeline activity tracking in Chrome.
+Enable Windows Timeline activity tracking in Chrome.
 
