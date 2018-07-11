@@ -1,0 +1,30 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+button#authButton {
+  border: none;
+  border-radius: 3px;
+  background: #4488ee;
+  color: white;
+  padding: 4px 6px;
+}
+span.square {
+  width: 8px;
+  height: 8px;
+  background: white;
+  display: block;
+  float: left;
+  margin-right: 1px;
+  margin-bottom: 1px;
+}
+div.clear {
+  clear: both;
+}
+div.logo {
+  float: left;
+  margin-right: 5px;
+}
+div.square-row span.square {
+  margin-bottom: 0;
+}

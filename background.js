@@ -4,35 +4,6 @@ const AuthorizeUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/autho
     , ClientSecret = 'csbRA707*wkxpTXNAQ55:?$'
     , Scope = 'UserActivity.ReadWrite.CreatedByApp offline_access';
 
-const data = {
-    "appActivityId": "/article?12345",
-    "activitySourceHost": "https://www.contoso.com",
-    "userTimezone": "Africa/Casablanca",
-    "appDisplayName": "Contoso, Ltd.",
-    "activationUrl": "http://www.contoso.com/article?id=12345",
-    "contentUrl": "http://www.contoso.com/article?id=12345",
-    "fallbackUrl": "http://www.contoso.com/article?id=12345",
-    "visualElements": {
-        "attribution": {
-            "iconUrl": "http://www.contoso.com/icon",
-            "alternateText": "Contoso, Ltd.",
-            "addImageQuery": "false"
-        },
-        "description": "How to Tie a Reef Knot. A step-by-step visual guide to the art of nautical knot-tying.",
-        "backgroundColor": "#ff0000",
-        "displayText": "Contoso How-To: How to Tie a Reef Knot",
-        "content": {
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "type": "AdaptiveCard",
-            "body":
-            [{
-                "type": "TextBlock",
-                "text": "Contoso MainPage"
-            }]
-        }
-    }
-};
-
 function queryString(args){
   const keys = Object.keys(args);
   return keys.map(k => `${k}=${encodeURIComponent(args[k])}`).join('&');
@@ -161,8 +132,12 @@ function putCore(activity, pair){
 }
 
 function putTimeline(message){
-  chrome.storage.sync.get(['access_token', 'refresh_token'], function(result){
+  chrome.storage.sync.get(['access_token', 'refresh_token', 'reject_url_with_password_form', 'remove_query_from_url'], function(result){
     if(!result.access_token) return;
+    if(result.reject_url_with_password_form && message.activity.hasPasswords) return;
+    if(result.remove_query_from_url){
+      message.activity.uri = message.activity.uri.replace(/\?.*$/, '');
+    }
     putCore(message.activity, result);
   });
 }

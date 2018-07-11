@@ -1,9 +1,44 @@
 <doctype html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
-    <button id="authButton">login</button>
+    <h1>Chrome Timeline</h1>
+    <h2>Sign in</h2>
+    <p>
+      <button id="authButton">
+        <div class="logo">
+          <div>
+            <span class="square"></span>
+            <span class="square"></span>
+          </div>
+          <div class="clear"></div>
+          <div class="square-row">
+            <span class="square"></span>
+            <span class="square"></span>
+          </div>
+        </div>
+        <span>
+          Sign in with Microsoft
+        </span>
+      </button>
+    </p>
+    <h2>Options</h2>
+    <ul>
+      <li>
+        <input type="checkbox" id="reject_url_with_password_form">
+        <label for="reject_url_with_password_form">
+          Ignore page contains password form
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="remove_query_from_url">
+        <label for="remove_query_from_url">
+          Remove query string from URL
+        </label>
+      </li>
+    </ul>
     <script src="index.js"></script>
   </body>
 </html>

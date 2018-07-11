@@ -19,6 +19,14 @@
     return ret;
   }
 
+  function findPasswordForm(){
+    const tags = document.getElementsByTagName('input');
+    for(let i = 0; i < tags.length; ++i){
+      if(tags[i].type === 'password') return true;
+    }
+    return false;
+  }
+
   function main(){
     const ogProp = og(document.getElementsByTagName('meta'));
     const links = rel(document.getElementsByTagName('link'));
@@ -30,6 +38,7 @@
       description: (ogProp['og:description'] || {}).content,
       image: (ogProp['og:image'] || {}).content,
       icon: (links['icon'] || {}).href,
+      hasPasswords: findPasswordForm(),
     };
     chrome.runtime.sendMessage({op: "put", activity}, function(response) {});
   }
