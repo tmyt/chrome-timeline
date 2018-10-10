@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Chrome Timeline",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
@@ -9,6 +9,9 @@
       "run_at": "document_end"
     }
   ],
+  "icons": {
+    "128": "assets/icon128.png"
+  },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
